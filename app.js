@@ -2,9 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const video = document.getElementById("videoPlayer");
   const source = document.createElement("source");
 
-  source.setAttribute("src", "http://localhost:8000/live/stream.flv");
-  source.setAttribute("type", "video/flv");
+  source.setAttribute("src", "output.mp4");
+  source.setAttribute("type", "video/mp4");
 
   video.appendChild(source);
-  video.onload();
+  video.load();
 });
