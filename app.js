@@ -1,10 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const video = document.getElementById("videoPlayer");
-  const source = document.createElement("source");
+  const videoElement = document.getElementById("videoPlayer");
 
-  source.setAttribute("src", "output.mp4");
-  source.setAttribute("type", "video/mp4");
-
-  video.appendChild(source);
-  video.load();
+  if (flvjs.isSupported()) {
+    const flvPlayer = flvjs.createPlayer({
+      type: "flv",
+      url: "http://192.168.1.100:8000/live/stream.flv",
+    });
+    flvPlayer.attachMediaElement(videoElement);
+    flvPlayer.load();
+    flvPlayer.play();
+  }
 });
