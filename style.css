@@ -52,3 +52,18 @@ footer {
   width: 100%;
   bottom: 0;
 }
+
+.avatar-large {
+    width: 100px; /* szerokość avatara */
+    height: 100px; /* wysokość avatara */
+    border-radius: 50%; /* zaokrąglone krawędzie dla okrągłego avatara */
+    object-fit: cover; /* utrzymuje proporcje obrazu */
+    border: 2px solid #ccc; /* opcjonalny obrys */
+}
+.avatar {
+    width: 50px; /* szerokość miniatury profilu */
+    height: 50px; /* wysokość miniatury profilu */
+    border-radius: 50%; /* zaokrąglone krawędzie dla okrągłego avatara */
+    object-fit: cover; /* Utrzymanie proporcji obrazu */
+    border: 2px solid #ccc; /* Opcjonalny obrys */
+}
