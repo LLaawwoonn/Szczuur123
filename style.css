@@ -67,6 +67,7 @@ footer {
     border-radius: 50%; /* zaokrąglone krawędzie dla okrągłego avatara */
     object-fit: cover; /* Utrzymanie proporcji obrazu */
     border: 2px solid #ccc; /* Opcjonalny obrys */
+
 }
 
 .user-icons {
@@ -77,4 +78,20 @@ footer {
 header h1 {
     margin-top: 0.5rem;
     font-size: 4rem;
+}
+
+.avatarELO {
+    width: 50px; /* szerokość miniatury profilu */
+    height: 50px; /* wysokość miniatury profilu */
+    border-radius: 50%; /* zaokrąglone krawędzie dla okrągłego avatara */
+    object-fit: cover; /* Utrzymanie proporcji obrazu */
+    border: 2px solid #ccc; /* Opcjonalny obrys */
+}
+
+.avatarpozycja{
+    margin-top: -3rem;
+}
+
+.powiadomieniapozycja {
+    padding-top: 10rem;
 }
