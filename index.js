@@ -18,7 +18,7 @@ const config = {
     ping_timeout: 60,
   },
   http: {
-    port: 8000,
+    port: 8080,
     allow_origin: "*",
   },
 };
@@ -32,12 +32,30 @@ io.on("connection", (socket) => {
   console.log("New client connected");
 
   socket.on("videoStream", (data) => {
+    console.log("Received video stream data");
     ffmpeg()
       .input(data)
       .inputFormat("rawvideo")
       .outputOptions("-vcodec libx264")
       .outputOptions("-f flv")
       .output("rtmp://localhost/live/stream")
+      .on("start", function () {
+        console.log("FFmpeg process started");
+      })
+      .on("codecData", function (data) {
+        console.log(
+          "Input is " + data.audio + " audio " + data.video + " video"
+        );
+      })
+      .on("progress", function (progress) {
+        console.log("Processing: " + progress.percent + "% done");
+      })
+      .on("error", function (err) {
+        console.log("An error occurred: " + err.message);
+      })
+      .on("end", function () {
+        console.log("Processing finished successfully");
+      })
       .run();
   });
 

@@ -1,27 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
   const videoElement = document.getElementById("videoPlayer");
-  const socket = io();
+  console.log("DOM fully loaded and parsed");
 
   if (flvjs.isSupported()) {
+    console.log("FLV.js is supported");
     const flvPlayer = flvjs.createPlayer({
       type: "flv",
-      url: "ws://localhost:8000/live/stream.flv",
+      url: "ws://localhost:8080/live/stream.flv",
     });
-    flvPlayer.attachMediaElement(videoElement);
-    flvPlayer.load();
-    flvPlayer.play();
-  }
+    console.log("FLV player created");
 
-  navigator.mediaDevices
-    .getUserMedia({ video: true, audio: true })
-    .then((stream) => {
-      const mediaRecorder = new MediaRecorder(stream);
-      mediaRecorder.ondataavailable = function (event) {
-        socket.emit("videoStream", event.data);
-      };
-      mediaRecorder.start(1000); // send data every second
-    })
-    .catch((error) => {
-      console.error("Error accessing media devices.", error);
+    flvPlayer.attachMediaElement(videoElement);
+    console.log("FLV player attached to video element");
+
+    videoElement.muted = true; // Wycisz wideo, aby umożliwić automatyczne odtwarzanie
+    flvPlayer.load();
+    console.log("FLV player loaded");
+
+    flvPlayer.on("play", function () {
+      console.log("FLV player is playing");
     });
+
+    flvPlayer.on("error", function (err) {
+      console.error("FLV player error: ", err);
+    });
+
+    flvPlayer.play();
+  } else {
+    console.log("FLV.js is not supported");
+  }
 });
