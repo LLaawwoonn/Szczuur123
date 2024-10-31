@@ -11,6 +11,9 @@ const config = {
   http: {
     port: 8000,
     allow_origin: "*",
+    media_root: "./media",
+    webroot: "./www",
+    api: true,
   },
 };
 
