@@ -1,3 +1,4 @@
+/* Style for the entire document body */
 body {
   font-family: Haettenschweiler;
   margin: 0;
@@ -5,6 +6,7 @@ body {
   background-color: #f4f4f4;
 }
 
+/* Style for the header section */
 header {
   background-color: #333;
   color: #fff;
@@ -14,6 +16,7 @@ header {
   bottom: 0;
 }
 
+/* Style for the navigation menu */
 nav ul {
   list-style: none;
   padding: 0;
@@ -22,10 +25,12 @@ nav ul {
   background-color: #444;
 }
 
+/* Style for navigation menu items */
 nav ul li {
   margin: 0 1rem;
 }
 
+/* Style for navigation links */
 nav ul li a {
   color: #fff;
   text-decoration: none;
@@ -33,18 +38,22 @@ nav ul li a {
   display: block;
 }
 
+/* Hover effect for navigation links */
 nav ul li a:hover {
   background-color: #555;
 }
 
+/* Style for the main content area */
 main {
   padding: 2rem;
 }
 
+/* Style for sections within the main content area */
 section {
   margin-bottom: 2rem;
 }
 
+/* Style for the footer section */
 footer {
   background-color: #333;
   color: #fff;
@@ -55,51 +64,59 @@ footer {
   bottom: 0;
 }
 
+/* Style for large avatars */
 .avatar-large {
-  width: 100px; /* szerokość avatara */
-  height: 100px; /* wysokość avatara */
-  border-radius: 50%; /* zaokrąglone krawędzie dla okrągłego avatara */
-  object-fit: cover; /* utrzymuje proporcje obrazu */
-  border: 2px solid #ccc; /* opcjonalny obrys */
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
 }
 
+/* Style for small avatars */
 .avatar {
-  width: 50px; /* szerokość miniatury profilu */
-  height: 50px; /* wysokość miniatury profilu */
-  border-radius: 50%; /* zaokrąglone krawędzie dla okrągłego avatara */
-  object-fit: cover; /* Utrzymanie proporcji obrazu */
-  border: 2px solid #ccc; /* Opcjonalny obrys */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
 }
 
+/* Style for user icons */
 .user-icons {
   margin-left: 92%;
   padding-top: 3.8%;
 }
 
+/* Style for header text */
 header h1 {
   margin-top: -7%;
   font-size: 4rem;
 }
 
+/* Another style for avatars */
 .avatarELO {
-  width: 50px; /* szerokość miniatury profilu */
-  height: 50px; /* wysokość miniatury profilu */
-  border-radius: 50%; /* zaokrąglone krawędzie dla okrągłego avatara */
-  object-fit: cover; /* Utrzymanie proporcji obrazu */
-  border: 2px solid #ccc; /* Opcjonalny obrys */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
 }
 
+/* Style for avatar positioning */
 .avatarpozycja {
   margin-top: -0.5rem;
 }
 
+/* Style for large profile pictures */
 .stronaawatar {
-  width: 9rem; /* szerokość miniatury profilu */
-  height: 9rem; /* wysokość miniatury profilu */
-  border-radius: 50%; /* zaokrąglone krawędzie dla okrągłego avatara */
-  object-fit: cover; /* Utrzymanie proporcji obrazu */
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
+/* Style for user statistics section */
 .Statystyki {
   position: absolute;
   margin-top: -2rem;
@@ -107,6 +124,7 @@ header h1 {
   font-size: 1.2rem;
 }
 
+/* Style for username display */
 .NazwaUżytkownika {
   position: absolute;
   margin-top: -4.7rem;
