@@ -1,4 +1,4 @@
-/* Global Styles */
+/* Style for the entire document body */
 body {
   font-family: Haettenschweiler;
   margin: 0;
@@ -6,7 +6,7 @@ body {
   background-color: #f4f4f4;
 }
 
-/* Header Styles */
+/* Style for the header section */
 header {
   background-color: #333;
   color: #fff;
@@ -16,36 +16,7 @@ header {
   bottom: 0;
 }
 
-/* User Icon Container */
-.user-icon-container {
-  margin-left: 92%;
-  padding-top: 3.8%;
-}
-
-/* User Avatar */
-.user-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #ccc;
-}
-
-/* Header Text */
-header h1 {
-  margin-top: -7%;
-  font-size: 4rem;
-}
-
-/* Site Logo */
-.site-logo {
-  width: 9rem;
-  height: 9rem;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-/* Navigation Styles */
+/* Style for the navigation menu */
 nav ul {
   list-style: none;
   padding: 0;
@@ -54,12 +25,12 @@ nav ul {
   background-color: #444;
 }
 
-/* Navigation Menu Items */
+/* Style for navigation menu items */
 nav ul li {
   margin: 0 1rem;
 }
 
-/* Navigation Links */
+/* Style for navigation links */
 nav ul li a {
   color: #fff;
   text-decoration: none;
@@ -67,22 +38,22 @@ nav ul li a {
   display: block;
 }
 
-/* Navigation Links Hover Effect */
+/* Hover effect for navigation links */
 nav ul li a:hover {
   background-color: #555;
 }
 
-/* Main Content Styles */
+/* Style for the main content area */
 main {
   padding: 2rem;
 }
 
-/* Section Styles */
+/* Style for sections within the main content area */
 section {
   margin-bottom: 2rem;
 }
 
-/* Footer Styles */
+/* Style for the footer section */
 footer {
   background-color: #333;
   color: #fff;
@@ -93,7 +64,7 @@ footer {
   bottom: 0;
 }
 
-/* Large Avatar Styles */
+/* Style for large avatars */
 .avatar-large {
   width: 100px;
   height: 100px;
@@ -102,16 +73,59 @@ footer {
   border: 2px solid #ccc;
 }
 
-/* User Statistics Section */
-.statistics {
+/* Style for small avatars */
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+/* Style for user icons */
+.user-icons {
+  margin-left: 92%;
+  padding-top: 3.8%;
+}
+
+/* Style for header text */
+header h1 {
+  margin-top: -7%;
+  font-size: 4rem;
+}
+
+/* Another style for avatars */
+.avatarELO {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+/* Style for avatar positioning */
+.avatarpozycja {
+  margin-top: -0.5rem;
+}
+
+/* Style for large profile pictures */
+.stronaawatar {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Style for user statistics section */
+.Statystyki {
   position: absolute;
   margin-top: -2rem;
   margin-left: 8rem;
   font-size: 1.2rem;
 }
 
-/* Username Display */
-.username-display {
+/* Style for username display */
+.NazwaUżytkownika {
   position: absolute;
   margin-top: -4.7rem;
   margin-left: 7.3rem;
