@@ -100,3 +100,17 @@ header h1 {
   border-radius: 50%; /* zaokrąglone krawędzie dla okrągłego avatara */
   object-fit: cover; /* Utrzymanie proporcji obrazu */
 }
+
+.Statystyki {
+ position:absolute;
+ margin-top: -2rem;
+ margin-left: 8rem;
+ font-size: 1.2rem;
+}
+
+.NazwaUżytkownika{
+  position: absolute;
+  margin-top: -4.7rem;
+  margin-left: 7.3rem;
+  font-size: 2rem;
+}

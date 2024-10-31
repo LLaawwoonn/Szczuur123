@@ -4,137 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Użytkownika</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Podlinkuj swój plik CSS -->
-    <style>
-        /* Styl dla avatara */
-        .avatar-large {
-            width: 100px; /* szerokość avatara */
-            height: 100px; /* wysokość avatara */
-            border-radius: 50%; /* zaokrąglone krawędzie dla okrągłego avatara */
-            object-fit: cover; /* Utrzymanie proporcji obrazu */
-            border: 2px solid #ccc; /* Opcjonalny obrys */
-        }
-        /* Styl dla nagłówka */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #f5f5f5;
-        }
-        /* Styl dla głównego kontenera */
-        main {
-            padding: 20px;
-        }
-        /* Styl dla sekcji profilu */
-        .profile-header {
-            display: flex;
-            align-items: center;
-        }
-        .profile-info {
-            margin-left: 20px;
-        }
-        /* Styl dla stopki */
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #f5f5f5;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-<header>
-    <div class="logo">Logo Platformy</div>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Discover</a></li>
-            <li><a href="#">Notifications</a></li>
-        </ul>
-    </nav>
-    <div class="user-icons">
-        <span>🔔</span> <!-- Ikona powiadomień -->
-        <span>✉️</span> <!-- Ikona wiadomości -->
-        <img src="plik.jpg" alt="Profil" class="avatarELO"> <!-- Miniaturka profilu -->
-    </div>
-</header>
+    <header>
+        <div class="user-icons">
+          <div class="avatarpozycja"><a href="Profile.html"><img src="Cat03.jpg" alt="Profil" class="avatar" /></div></a>
+        </div> 
+        <h1><img src="DALL·E 2024-10-31 08.32.18 - A distinctive streaming service icon design in black, dark gray, and white. Featuring a minimalist play button or video camera symbol, with a bold and.webp" class="stronaawatar"></h1>
+      </header>
+<nav>
+    <ul>
+      <li><a href="index.html">Strona główna</a></li>
+      <li><a href="streams">Live stream</a></li>
+    </ul>
+  </nav>
 
 <main>
     <section class="profile-header">
-        <div class="banner" style="width: 100%; height: 150px; background-color: #ddd;"></div> <!-- Baner tła -->
+        <div class="banner"></div> <!-- Baner tła -->
         <div class="profile-info">
-            <img src="Cat03.jpg" alt="Profil" class="avatar-large"> <!-- Duży avatar -->
-            <h1>@NazwaUżytkownika</h1>
+            <img src="Cat03.jpg" alt="Profil" class="avatar-large">
+            <div><p class="Statystyki">Obserwujący: 1234</p></div>
+            <div><p class="NazwaUżytkownika">@NazwaUżytkownika</p></div>
             <p>Opis użytkownika - zainteresowania, ulubione gry</p>
             <div class="action-buttons">
                 <button>Obserwuj</button>
                 <button>Wyślij wiadomość</button>
-                <button>Zgłoś użytkownika</button>
             </div>
-        </div>
-    </section>
-
-    <section class="content">
-        <h2>Ostatnie transmisje</h2>
-        <div class="streams">
-            <div class="stream">
-                <img src="stream1.jpg" alt="Stream 1">
-                <p>Tytuł Streamu 1</p>
-                <span>Data i liczba widzów</span>
-            </div>
-            <div class="stream">
-                <img src="stream2.jpg" alt="Stream 2">
-                <p>Tytuł Streamu 2</p>
-                <span>Data i liczba widzów</span>
-            </div>
-            <button>Zobacz więcej</button>
-        </div>
-
-        <h2>Ulubione gry</h2>
-        <div class="favorite-games">
-            <img src="game1.jpg" alt="Gra 1">
-            <img src="game2.jpg" alt="Gra 2">
-            <img src="game3.jpg" alt="Gra 3">
-        </div>
-
-        <h2>Statystyki</h2>
-        <ul>
-            <li>Obserwujący: 1234</li>
-            <li>Obserwowani: 567</li>
-            <li>Łączny czas streamowania: 1000h</li>
-            <li>Największa liczba widzów: 200</li>
-        </ul>
-    </section>
-
-    <section class="interactions">
-        <h2>Ostatnie komentarze</h2>
-        <div class="comments">
-            <p>Komentarz od widza 1</p>
-            <p>Komentarz od widza 2</p>
-            <button>Zobacz wszystkie komentarze</button>
-        </div>
-
-        <h2>Zbliżające się transmisje</h2>
-        <div class="upcoming-streams">
-            <p>Transmisja 1 - Data i godzina</p>
-            <p>Transmisja 2 - Data i godzina</p>
         </div>
     </section>
 </main>
 
 <footer>
-    <ul>
-        <li><a href="#">Polityka prywatności</a></li>
-        <li><a href="#">Regulamin</a></li>
-        <li><a href="#">Kontakt</a></li>
-    </ul>
-    <div class="social-media">
-        <span>Facebook</span>
-        <span>Twitter</span>
-        <span>Instagram</span>
-    </div>
-</footer>
-
+    <p>
+      &copy; 2024 lawon to cwel pierdolony 
+    </p>
+  </footer>
+  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js"></script>
 </body>
 </html>
