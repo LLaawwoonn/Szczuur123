@@ -3,6 +3,7 @@ const http = require("http");
 const socketIo = require("socket.io");
 const ffmpeg = require("fluent-ffmpeg");
 const path = require("path");
+const fs = require("fs");
 const NodeMediaServer = require("node-media-server");
 
 const app = express();
@@ -11,6 +12,14 @@ const io = socketIo(server);
 
 const mediaRoot = path.join(__dirname, "media");
 console.log("MediaRoot is set to:", mediaRoot);
+
+// Sprawdź, czy folder media istnieje i ma odpowiednie uprawnienia
+if (!fs.existsSync(mediaRoot)) {
+  fs.mkdirSync(mediaRoot);
+  console.log("Media folder created at:", mediaRoot);
+} else {
+  console.log("Media folder already exists at:", mediaRoot);
+}
 
 const config = {
   rtmp: {
@@ -25,7 +34,7 @@ const config = {
     allow_origin: "*",
   },
   trans: {
-    ffmpeg: "ffmpeg", // Jeśli dodałeś ffmpeg do PATH, wystarczy "ffmpeg"
+    ffmpeg: "ffmpeg",
     tasks: [
       {
         app: "live",
@@ -33,7 +42,7 @@ const config = {
         hlsFlags: "[hls_time=2:hls_list_size=3:hls_flags=delete_segments]",
         dash: true,
         dashFlags: "[f=dash:window_size=3:extra_window_size=5]",
-        mediaRoot: mediaRoot, // Ustaw poprawną ścieżkę MediaRoot
+        mediaRoot: mediaRoot,
         output: "live",
       },
     ],
