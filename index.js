@@ -1,19 +1,21 @@
 const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
-const ffmpeg = require("fluent-ffmpeg");
 const path = require("path");
 const fs = require("fs");
+const { exec } = require("child_process");
 const NodeMediaServer = require("node-media-server");
 
+// Initialize Express app and server
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-const mediaRoot = path.join(__dirname, "media");
+// Define media root directory with full path
+const mediaRoot = path.resolve(__dirname, "media");
 console.log("MediaRoot is set to:", mediaRoot);
 
-// Sprawdź, czy folder media istnieje i ma odpowiednie uprawnienia
+// Check if media directory exists and create if not
 if (!fs.existsSync(mediaRoot)) {
   fs.mkdirSync(mediaRoot);
   console.log("Media folder created at:", mediaRoot);
@@ -21,7 +23,17 @@ if (!fs.existsSync(mediaRoot)) {
   console.log("Media folder already exists at:", mediaRoot);
 }
 
+// Check if media directory is writable
+fs.access(mediaRoot, fs.constants.W_OK, (err) => {
+  if (err) {
+    console.error("MediaRoot folder is not writable:", err);
+  } else {
+    console.log("MediaRoot folder is writable.");
+  }
+});
+
 const config = {
+  logType: 3,
   rtmp: {
     port: 1935,
     chunk_size: 60000,
@@ -34,7 +46,8 @@ const config = {
     allow_origin: "*",
   },
   trans: {
-    ffmpeg: "ffmpeg",
+    ffmpeg: "avconv", // Set to avconv for Libav
+    mediaRoot: mediaRoot,
     tasks: [
       {
         app: "live",
@@ -42,47 +55,33 @@ const config = {
         hlsFlags: "[hls_time=2:hls_list_size=3:hls_flags=delete_segments]",
         dash: true,
         dashFlags: "[f=dash:window_size=3:extra_window_size=5]",
-        mediaRoot: mediaRoot,
         output: "live",
+        mediaRoot: mediaRoot,
       },
     ],
   },
 };
 
-const nms = new NodeMediaServer(config);
-nms.run();
-
+// Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "public")));
 
+// Socket.IO connection handling
 io.on("connection", (socket) => {
   console.log("New client connected");
 
   socket.on("videoStream", (data) => {
     console.log("Received video stream data");
-    ffmpeg()
-      .input(data)
-      .inputFormat("rawvideo")
-      .outputOptions("-vcodec libx264")
-      .outputOptions("-f flv")
-      .output("rtmp://localhost/live/stream")
-      .on("start", function () {
-        console.log("FFmpeg process started");
-      })
-      .on("codecData", function (data) {
-        console.log(
-          "Input is " + data.audio + " audio " + data.video + " video"
-        );
-      })
-      .on("progress", function (progress) {
-        console.log("Processing: " + progress.percent + "% done");
-      })
-      .on("error", function (err) {
-        console.log("An error occurred: " + err.message);
-      })
-      .on("end", function () {
-        console.log("Processing finished successfully");
-      })
-      .run();
+
+    // Use child_process to run avconv
+    const avconvCommand = `avconv -i ${data} -vcodec libx264 -f flv rtmp://localhost/live/stream`;
+    exec(avconvCommand, (err, stdout, stderr) => {
+      if (err) {
+        console.error(`An error occurred: ${err.message}`);
+        return;
+      }
+      console.log(`avconv stdout: ${stdout}`);
+      console.error(`avconv stderr: ${stderr}`);
+    });
   });
 
   socket.on("disconnect", () => {
@@ -96,3 +95,8 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 8000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+console.log("Initializing NodeMediaServer...");
+const nms = new NodeMediaServer(config);
+nms.run();
+console.log("NodeMediaServer initialized and running.");

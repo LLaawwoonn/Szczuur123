@@ -52,3 +52,14 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Received video stream data:", data);
   });
 });
+
+// Dodaj test null dla this._remuxer
+flvjs.LoggingControl.enableDebug = true;
+
+flvjs.BaseLoader.prototype._onLoaderComplete = function (event) {
+  if (this._remuxer) {
+    this._remuxer.remux(event.data);
+  } else {
+    console.error("Remuxer is null");
+  }
+};
