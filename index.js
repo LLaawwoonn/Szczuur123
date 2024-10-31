@@ -9,6 +9,9 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
+const mediaRoot = path.join(__dirname, "media");
+console.log("MediaRoot is set to:", mediaRoot);
+
 const config = {
   rtmp: {
     port: 1935,
@@ -20,6 +23,20 @@ const config = {
   http: {
     port: 8080,
     allow_origin: "*",
+  },
+  trans: {
+    ffmpeg: "ffmpeg", // Jeśli dodałeś ffmpeg do PATH, wystarczy "ffmpeg"
+    tasks: [
+      {
+        app: "live",
+        hls: true,
+        hlsFlags: "[hls_time=2:hls_list_size=3:hls_flags=delete_segments]",
+        dash: true,
+        dashFlags: "[f=dash:window_size=3:extra_window_size=5]",
+        mediaRoot: mediaRoot, // Ustaw poprawną ścieżkę MediaRoot
+        output: "live",
+      },
+    ],
   },
 };
 

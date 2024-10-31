@@ -6,9 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("FLV.js is supported");
     const flvPlayer = flvjs.createPlayer({
       type: "flv",
-      url: "ws://localhost:8080/live.flv",
+      url: "ws://localhost:8080/live/stream.flv",
     });
-    console.log("FLV player created with URL ws://localhost:8080/live.flv");
+    console.log(
+      "FLV player created with URL ws://localhost:8080/live/stream.flv"
+    );
 
     flvPlayer.attachMediaElement(videoElement);
     console.log("FLV player attached to video element");
